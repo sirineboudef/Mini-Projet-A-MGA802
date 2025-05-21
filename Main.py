@@ -13,5 +13,5 @@
 # dernier option
 from Affichage_pour_utilisateur import menu_principal
 
-if __name__ == "__main__":
-    menu_principal()
+
+menu_principal()
