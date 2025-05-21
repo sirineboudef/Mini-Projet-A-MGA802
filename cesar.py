@@ -12,7 +12,7 @@ def chiffrement_cesar(message, cle):
             l = (l + cle) % 26  # %26 assure que l'indice reste entre 0 et 25
             message_crypte += alphabet[l]
         else:
-            # Garder les caractères non alphabétiques (espaces, ponctuation, etc.)
+            # Garder les caractères non alphabétiques (espaces, ponctuation, etc)
             message_crypte += lettre
 
     return message_crypte
