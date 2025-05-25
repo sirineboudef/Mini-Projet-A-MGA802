@@ -1,11 +1,11 @@
 import string
-
+from utils import enlever_caracteres_speciaux
 from charset_normalizer.utils import remove_accent
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 def chiffrement_cesar(message, cle):
-    message_sans_accent = remove_accent(message)
+    message_sans_accent = enlever_caracteres_speciaux(message)
     message_crypte = ''
     # Convertir en minuscule pour gérer les majuscules
     for lettre in message_sans_accent.lower():
@@ -21,7 +21,7 @@ def chiffrement_cesar(message, cle):
     return message_crypte
 
 def dechiffrement_cesar(message, cle):
-    message_sans_accent = remove_accent(message)
+    message_sans_accent = enlever_caracteres_speciaux(message)
     message_decrypte = ''
     for lettre in message_sans_accent.lower():
         if lettre in alphabet:
