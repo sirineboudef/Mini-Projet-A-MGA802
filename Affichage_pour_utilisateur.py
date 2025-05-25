@@ -43,6 +43,7 @@ def menu_principal():
                 print("\nMessage chiffré :", chiffrement_cesar(message, cle))
             else:
                 nom_fichier = input("Nom du fichier de sortie : ")
+                nom_fichier =f"{nom_fichier}.txt"
                 ecrire_fichier(nom_fichier, chiffrement_cesar(message, cle))
                 print(f"Résultat enregistré dans {nom_fichier}")
         elif choix == '2':
@@ -53,6 +54,7 @@ def menu_principal():
                 print("\nMessage déchiffré :", dechiffrement_cesar(message, cle))
             else:
                 nom_fichier = input("Nom du fichier de sortie : ")
+                nom_fichier = f"{nom_fichier}.txt"
                 ecrire_fichier(nom_fichier, dechiffrement_cesar(message, cle))
                 print(f"Résultat enregistré dans {nom_fichier}")
         elif choix == '3':
