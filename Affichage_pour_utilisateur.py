@@ -61,16 +61,18 @@ def menu_principal():
             if contenu:
                 cle = demander_cle()
                 resultat = chiffrement_cesar(contenu, cle)
-                ecrire_fichier("fichier_chiffre.txt", resultat)
-                print("Fichier chiffré dans fichier_chiffre.txt")
+                nom_sortie = input("Nom du fichier de sortie (ex: mon_fichier_chiffre.txt) : ")
+                ecrire_fichier(nom_sortie, resultat)
+                print(f"Fichier chiffré enregistré dans {nom_sortie}")
         elif choix == '4':
             nom = input("Nom du fichier à déchiffrer : ")
             contenu = lire_fichier(nom)
             if contenu:
                 cle = demander_cle()
                 resultat = dechiffrement_cesar(contenu, cle)
-                ecrire_fichier("fichier_dechiffre.txt", resultat)
-                print("Fichier déchiffré dans fichier_dechiffre.txt")
+                nom_sortie = input("Nom du fichier de sortie (ex: mon_fichier_dechiffre.txt) : ")
+                ecrire_fichier(nom_sortie, resultat)
+                print(f"Fichier déchiffré enregistré dans {nom_sortie}")
         elif choix == '5':
             message = demander_texte()
             bruteforce(message)
