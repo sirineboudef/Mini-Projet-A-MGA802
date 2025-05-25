@@ -11,6 +11,18 @@ def demander_cle():
         except ValueError:
             print("Veuillez entrer un entier valide.")
 
+def demander_sortie():
+    """Demande à l'utilisateur où il veut voir le résultat"""
+    while True:
+        print("\nOù voulez-vous le résultat ?")
+        print("1. Afficher dans la console")
+        print("2. Enregistrer dans un fichier")
+        choix = input("Votre choix : ")
+        if choix in ('1', '2'):
+            return choix
+        print("Choix invalide.")
+
+
 def menu_principal():
     while True:
         print("\n--- Menu Principal ---")
@@ -26,11 +38,23 @@ def menu_principal():
         if choix == '1':
             message = demander_texte()
             cle = demander_cle()
-            print("Message chiffré :", chiffrement_cesar(message, cle))
+            sortie = demander_sortie()
+            if sortie == '1':
+                print("\nMessage chiffré :", chiffrement_cesar(message, cle))
+            else:
+                nom_fichier = input("Nom du fichier de sortie : ")
+                ecrire_fichier(nom_fichier, chiffrement_cesar(message, cle))
+                print(f"Résultat enregistré dans {nom_fichier}")
         elif choix == '2':
             message = demander_texte()
             cle = demander_cle()
-            print("Message déchiffré :", dechiffrement_cesar(message, cle))
+            sortie = demander_sortie()
+            if sortie == '1':
+                print("\nMessage déchiffré :", dechiffrement_cesar(message, cle))
+            else:
+                nom_fichier = input("Nom du fichier de sortie : ")
+                ecrire_fichier(nom_fichier, dechiffrement_cesar(message, cle))
+                print(f"Résultat enregistré dans {nom_fichier}")
         elif choix == '3':
             nom = input("Nom du fichier à chiffrer : ")
             contenu = lire_fichier(nom)
