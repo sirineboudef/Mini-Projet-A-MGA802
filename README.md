@@ -15,11 +15,11 @@ Ce projet est une implémentation complète du **chiffrement de César** en Pyth
 
 ##  Fonctionnalités
 
--Chiffrement et déchiffrement avec clé personnalisée  
--Lecture et écriture dans des fichiers texte  
--Mode brute-force avec affichage de toutes les clés possibles  
--Support des majuscules, minuscules et caractères spéciaux (non modifiés)  
--Code modulaire et bien commenté pour permettre la collaboration
+- Chiffrement et déchiffrement avec clé personnalisée  
+- Lecture et écriture dans des fichiers texte  
+- Mode brute-force avec affichage de toutes les clés possibles  
+- Support des majuscules, minuscules et caractères spéciaux (non modifiés)  
+- Code modulaire et bien commenté pour permettre la collaboration
 
 
 
