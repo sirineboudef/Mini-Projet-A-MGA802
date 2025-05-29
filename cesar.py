@@ -4,7 +4,7 @@ from charset_normalizer.utils import remove_accent
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
-def chiffrement_texte(texte, cle):
+def chiffrer_texte(texte, cle):
     texte_sans_accent = enlever_caracteres_speciaux(texte)
     texte_crypte = ''
     # Convertir en minuscule pour gérer les majuscules
@@ -20,7 +20,7 @@ def chiffrement_texte(texte, cle):
 
     return texte_crypte
 
-def dechiffrement_texte(texte, cle):
+def dechiffrer_texte(texte, cle):
     texte_sans_accent = enlever_caracteres_speciaux(texte)
     texte_decrypte = ''
     for lettre in texte_sans_accent.lower():
@@ -37,7 +37,7 @@ def dechiffrement_texte(texte, cle):
 def bruteforce(texte):
     print("\n--- Mode Brute Force ---")
     for cle in range(1, 26):
-        tentative = dechiffrement_texte(texte, cle)
+        tentative = dechiffrer_texte(texte, cle)
         print(f"Clé {cle}: {tentative}")
     print("Essayez d’identifier visuellement le bon résultat.")
 
