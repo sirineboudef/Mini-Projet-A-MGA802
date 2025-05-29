@@ -1,3 +1,4 @@
+
 # Mini-Projet-A-MGA802
 Création d'un programme de chiffrement de cesar
 
@@ -40,4 +41,10 @@ Création d'un programme de chiffrement de cesar
 - Conversion automatique en minuscules pour le traitement
 - Conservation des caractères non-alphabétiques (espaces, ponctuation)
 - Extension `.txt` systématique pour les fichiers de sortie
+
+
+
+
+
+
 
