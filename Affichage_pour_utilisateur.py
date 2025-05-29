@@ -39,29 +39,29 @@ def menu_principal():
             cle = demander_cle()
             sortie = demander_sortie()
             if sortie == '1':
-                print("\nTexte chiffré :", chiffrement_texte(texte, cle))
+                print("\nTexte chiffré :", chiffrer_texte(texte, cle))
             else:
                 nom_fichier = input("Nom du fichier de sortie : ")
                 nom_fichier =f"{nom_fichier}.txt"
-                ecrire_fichier(nom_fichier, chiffrement_texte(texte, cle))
+                ecrire_fichier(nom_fichier, chiffrer_texte(texte, cle))
                 print(f"Résultat enregistré dans {nom_fichier}")
         elif choix == '2':
             texte = demander_texte()
             cle = demander_cle()
             sortie = demander_sortie()
             if sortie == '1':
-                print("\nTexte déchiffré :", dechiffrement_texte(texte, cle))
+                print("\nTexte déchiffré :", dechiffrer_texte(texte, cle))
             else:
                 nom_fichier = input("Nom du fichier de sortie : ")
                 nom_fichier = f"{nom_fichier}.txt"
-                ecrire_fichier(nom_fichier, dechiffrement_texte(texte, cle))
+                ecrire_fichier(nom_fichier, dechiffrer_texte(texte, cle))
                 print(f"Résultat enregistré dans {nom_fichier}")
         elif choix == '3':
             nom = input("Nom du fichier à chiffrer : ")
             contenu = lire_fichier(nom)
             if contenu:
                 cle = demander_cle()
-                resultat = chiffrement_texte(contenu, cle)
+                resultat = chiffrer_texte(contenu, cle)
                 nom_sortie = input("Nom du fichier de sortie (ex: mon_fichier_chiffre.txt) : ")
                 ecrire_fichier(nom_sortie, resultat)
                 print(f"Fichier chiffré enregistré dans {nom_sortie}")
@@ -70,7 +70,7 @@ def menu_principal():
             contenu = lire_fichier(nom)
             if contenu:
                 cle = demander_cle()
-                resultat = dechiffrement_texte(contenu, cle)
+                resultat = dechiffrer_texte(contenu, cle)
                 nom_sortie = input("Nom du fichier de sortie (ex: mon_fichier_dechiffre.txt) : ")
                 ecrire_fichier(nom_sortie, resultat)
                 print(f"Fichier déchiffré enregistré dans {nom_sortie}")
