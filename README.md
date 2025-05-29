@@ -1,25 +1,50 @@
 
-#  Chiffrement de César – Mini-Projet Python
+# Mini-Projet-A-MGA802
+Création d'un programme de chiffrement de cesar
 
-Ce projet est une implémentation complète du **chiffrement de César** en Python, réalisée dans le cadre du cours **MGA802 - Introduction à la programmation avec Python**.
 
-## Objectifs
+### 1. Chiffrer un message
+- **Étapes :**
+  1. L'utilisateur saisit le message à chiffrer
+  2. L'utilisateur entre la clé de chiffrement (entier positif ou négatif)
+  3. Choix de sortie :
+     - **Option 1** : Affichage du message chiffré dans la console
+     - **Option 2** : Enregistrement dans un fichier texte (nom personnalisable)
 
-- Permettre à l'utilisateur de **chiffrer** ou **déchiffrer** un message avec une clé choisie.
-- Prendre en charge les **textes entrés manuellement** ou via des **fichiers texte**.
-- Gérer des **clés positives ou négatives**.
-- Offrir un **mode brute-force** pour déchiffrer un message sans connaître la clé.
-- Offrir une interface utilisateur simple via la console.
+### 2. Déchiffrer un message
+- **Étapes :**
+  1. L'utilisateur saisit le message chiffré
+  2. L'utilisateur entre la clé de déchiffrement
+  3. Choix de sortie :
+     - **Option 1** : Affichage du message déchiffré dans la console
+     - **Option 2** : Enregistrement dans un fichier texte (nom personnalisable)
 
----
+### 3. Chiffrer un fichier
+- **Étapes :**
+  1. L'utilisateur spécifie le fichier source à chiffrer
+  2. L'utilisateur entre la clé de chiffrement
+  3. Le système génère un nouveau fichier chiffré avec :
+     - Nom personnalisable par l'utilisateur
+     - Extension `.txt` automatique
 
-##  Fonctionnalités
+### 4. Déchiffrer un fichier
+- **Étapes :**
+  1. L'utilisateur spécifie le fichier chiffré à décoder
+  2. L'utilisateur entre la clé de déchiffrement
+  3. Le système génère un nouveau fichier déchiffré avec :
+     - Nom personnalisable par l'utilisateur
+     - Extension `.txt` automatique
 
-- Chiffrement et déchiffrement avec clé personnalisée  
-- Lecture et écriture dans des fichiers texte  
-- Mode brute-force avec affichage de toutes les clés possibles  
-- Support des majuscules, minuscules et caractères spéciaux (non modifiés)  
-- Code modulaire et bien commenté pour permettre la collaboration
+## Caractéristiques techniques
+- Gestion automatique des accents et caractères spéciaux
+- Support des clés positives et négatives
+- Conversion automatique en minuscules pour le traitement
+- Conservation des caractères non-alphabétiques (espaces, ponctuation)
+- Extension `.txt` systématique pour les fichiers de sortie
+
+
+
+
 
 
 
