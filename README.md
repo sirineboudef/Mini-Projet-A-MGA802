@@ -1,6 +1,7 @@
 
 # Mini-Projet-A-MGA802
-Création d'un programme de chiffrement.
+Création d'un programme de chiffrement
+
 Pour utiliser cette programme il faut telecharger tout les fichiers et les garde dans un meme dossier et finalement ouvrir le ficher main pour l'utiliser
 
 ### 1. Chiffrer un message
