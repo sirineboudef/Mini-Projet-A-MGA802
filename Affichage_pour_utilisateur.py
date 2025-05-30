@@ -1,10 +1,11 @@
-from cesar import*
-from utils import lire_fichier, ecrire_fichier, charger_dictionnaire
+from utils import*
 from brute_force import*
 
+# Fonction qui permet de demander le texte
 def demander_texte():
     return input("Entrez le texte à traiter : ")
 
+# Fonction qui permet d'avoir la cle
 def demander_cle():
     while True:
         try:
@@ -12,6 +13,7 @@ def demander_cle():
         except ValueError:
             print("Veuillez entrer un entier valide.")
 
+# Fonction pour demander a l'utilisateur ou il veut avoir le resultat
 def demander_sortie():
     """Demande à l'utilisateur où il veut voir le résultat"""
     while True:
@@ -23,7 +25,7 @@ def demander_sortie():
             return choix
         print("Choix invalide.")
 
-
+# Fonction principale du programme
 def menu_principal():
     while True:
         print("\n--- Menu Principal ---")
@@ -32,7 +34,8 @@ def menu_principal():
         print("3. Chiffrer un fichier")
         print("4. Déchiffrer un fichier")
         print("5. Déchiffrer un texte sans clé")
-        print("6. Quitter")
+        print("6. Déchiffrer un fichier sans clé")
+        print("7. Quitter")
 
         choix = input("Votre choix : ")
 
@@ -85,25 +88,44 @@ def menu_principal():
             dico = charger_dictionnaire("ressources/dico.txt")
             texte = demander_texte()
 
-            # Mots fréquents (tu peux aussi les charger depuis un fichier si besoin)
-
-            mots_frequents = {"le", "la", "et", "un", "de", "en", "est", "que", "dans", "pour"}
-
             # Appel du déchiffrement intelligent (avec interaction utilisateur)
-
             texte_final, cle = dechiffrer_automatiquement(texte, mots_frequents, dico)
 
-            if texte_final:
+            if texte_final and cle is not None:
+                choix = demander_sortie()
+                if choix == '1':
+                    print("\nTexte déchiffré :")
+                    print(texte_final)
+                    print(f"Clé trouvée : {cle}")
+                elif choix=='2':
+                    nom_fichier = input("Nom du fichier de sortie : ")
+                    contenu = f"Clé trouvée : {cle}\n\nTexte déchiffré :\n{texte_final}"
+                    ecrire_fichier(nom_fichier, contenu)
+                    print(f"\nRésultat enregistré dans {nom_fichier}")
+                else:
+                     print("\n Aucune proposition n’a été validée par l’utilisateur.")
 
-                print("\n Texte déchiffré :", texte_final)
+        elif choix == "6":
+            dico = charger_dictionnaire("ressources/dico.txt")
+            nom_fichier = input("Nom du fichier à déchiffrer : ")
+            texte = lire_fichier(nom_fichier)
+            if texte:
+                texte_final, cle = dechiffrer_automatiquement(texte, mots_frequents, dico)
+                if texte_final and cle is not None:
+                    sortie = demander_sortie()
+                    if sortie == '1':
+                        print("\nTexte déchiffré :")
+                        print(texte_final)
+                        print(f"Clé trouvée : {cle}")
+                    else:
+                        nom_fichier = input("Nom du fichier de sortie : ")
+                        contenu = f"Clé trouvée : {cle}\n\nTexte déchiffré :\n{texte_final}"
+                        ecrire_fichier(nom_fichier, contenu)
+                        print(f"\nRésultat enregistré dans {nom_fichier}")
+                else:
+                    print("\nAucune proposition n’a été validée par l’utilisateur.")
 
-                print(" Clé trouvée :", cle)
-
-            else:
-
-                print("\n Aucune proposition n’a été validée par l’utilisateur.")
-
-        elif choix == '6':
+        elif choix == '7':
             print("Au revoir !")
             break
         else:
