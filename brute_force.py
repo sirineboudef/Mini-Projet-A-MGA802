@@ -1,5 +1,6 @@
 import string
 from cesar import*
+SEUIL_MIN=3  # score minimal pour considérer une proposition valable
 
 # Fonction pour le decompte des mots les plus utilises en langue francaise
 def compter_mots_frequents(texte, mots_frequents):
@@ -7,72 +8,50 @@ def compter_mots_frequents(texte, mots_frequents):
     return sum(1 for mot in mots if mot in mots_frequents)
 
 # Fonction pour tester les cles et les valider.
-def tester_cles_et_valider(texte, cles_a_tester, dictionnaire):
+def tester_cles(texte, cles_a_tester, dictionnaire):
     scores = []
     for cle in cles_a_tester:
         texte_dechiffre = dechiffrer_texte(texte, cle)
         mots = texte_dechiffre.lower().translate(str.maketrans('', '', string.punctuation)).split()
-        score = sum(1 for mot in mots if mot in dictionnaire)
-        scores.append((cle, texte_dechiffre, score))
+        score = compter_mots_frequents(texte_dechiffre, dictionnaire)
+        if score >= SEUIL_MIN:
+            scores.append((cle, texte_dechiffre, score))
+
+
 # Trier les résultats par score décroissant
     scores.sort(key=lambda x: x[2], reverse=True)
 
-    for cle, texte_propose, score in scores:
+    for cle, texte_dechiffre, score in scores:
         print(f"\n Proposition avec la clé {cle} (score: {score}) :")
-        print(texte_propose)
-        reponse = input(" Ce texte vous semble correct ? (o/n) : ").strip().lower()
-        if reponse == 'o':
+        print(texte_dechiffre)
+        if  input(" Ce texte vous semble correct ? (o/n) : ").strip().lower()=='o':
             print("Texte validé par l'utilisateur.")
-            return texte_propose, cle
+            return texte_dechiffre, cle
 
     print(" Aucun texte n'a été validé par l'utilisateur ")
     return None, None
 
+
 # Méthode automatique principale avec validation utilisateur
 def dechiffrer_automatiquement(texte, mots_frequents, dictionnaire):
-    scores_frequents = {}
-    for cle in range(26):
-        texte_dechiffre = dechiffrer_texte(texte, cle)
-        score = compter_mots_frequents(texte_dechiffre, mots_frequents)
-        scores_frequents[cle] = score
+    scores = {cle: compter_mots_frequents(dechiffrer_texte(texte, cle), mots_frequents) for cle in range(26)}
+    max_score = max(scores.values())
+    meilleures_cles = [cle for cle, score in scores.items() if score == max_score]
 
-    max_score = max(scores_frequents.values())
-    meilleures_cles = [cle for cle, score in scores_frequents.items() if score == max_score]
-
+    # Cas 1 : aucun mot fréquent → test complet avec dictionnaire
     if max_score == 0:
-        return tester_cles_et_valider(texte, range(26), dictionnaire)
-    elif len(meilleures_cles) == 1:
-        texte_propose = dechiffrer_texte(texte, meilleures_cles[0])
-        print(f"\n Clé la plus probable détectée : {meilleures_cles[0]}")
-        print(texte_propose)
-        reponse = input(" Ce texte vous semble correct ? (o/n) : ").strip().lower()
-        if reponse == 'o':
-            return texte_propose, meilleures_cles[0]
-        else:
-            # Si refusé, on essaie les autres clés classées
-            return tester_cles_et_valider(texte, [cle for cle in range(26) if cle != meilleures_cles[0]], dictionnaire)
-    else:
-        return tester_cles_et_valider(texte, meilleures_cles, dictionnaire)
-from cesar import dechiffrer_texte
+        return tester_cles(texte, range(26), dictionnaire)
 
-def charger_dictionnaire(fichier):
-    with open(fichier, encoding='utf-8') as f:
-        mots = f.read().splitlines()
-    return set(m.lower() for m in mots)
+    # Cas 2 : une seule clé se détache
+    if len(meilleures_cles) == 1:
+        cle = meilleures_cles[0]
+        candidat = dechiffrer_texte(texte, cle)
+        if compter_mots_frequents(candidat, mots_frequents) >= SEUIL_MIN:
+            print(f"\n🔑 Clé probable détectée : {cle}")
+            print(candidat)
+            if input("✅ Ce texte vous semble correct ? (o/n) : ").strip().lower() == 'o':
+                return candidat, cle
+        return tester_cles(texte, [c for c in range(26) if c != cle], dictionnaire)
 
-def bruteforce_texte(texte, dictionnaire):
-    meilleur_score = 0
-    meilleure_cle = None
-    meilleur_texte = ""
-
-    for cle in range(1, 26):
-        texte = dechiffrer_texte(texte, cle)
-        mots = texte.lower().split()
-        score = sum(1 for mot in mots if mot.strip(",.!?;:") in dictionnaire)
-
-        if score > meilleur_score:
-            meilleur_score = score
-            meilleure_cle = cle
-            meilleur_texte = texte
-
-    return meilleure_cle, meilleur_texte
+    # Cas 3 : plusieurs clés avec même score → affiner avec dictionnaire
+    return tester_cles(texte, meilleures_cles, dictionnaire)

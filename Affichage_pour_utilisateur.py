@@ -1,5 +1,6 @@
 from cesar import*
 from utils import lire_fichier, ecrire_fichier, charger_dictionnaire
+from brute_force import*
 
 def demander_texte():
     return input("Entrez le texte à traiter : ")
