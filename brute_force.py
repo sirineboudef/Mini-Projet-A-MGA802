@@ -1,3 +1,4 @@
+
 """Ce module inclus toutes les fonction necessaires a l'execution de la methode
 de la brute-force automatique"""
 # 1- Compter le nombre de mots frequents contenu dans le texte.
@@ -65,4 +66,5 @@ def dechiffrer_automatiquement(texte, liste_mots, dictionnaire):
 
     # Cas 3 : plusieurs clés avec même score (affiner avec dictionnaire)
     return tester_cles(texte, meilleures_cles, dictionnaire)
+
 
