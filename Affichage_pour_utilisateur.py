@@ -30,6 +30,7 @@ def menu_principal():
         print("2. Déchiffrer un texte")
         print("3. Chiffrer un fichier")
         print("4. Déchiffrer un fichier")
+        print("5. Déchiffrer un texte sans clé")
         print("6. Quitter")
 
         choix = input("Votre choix : ")
@@ -45,6 +46,7 @@ def menu_principal():
                 nom_fichier =f"{nom_fichier}.txt"
                 ecrire_fichier(nom_fichier, chiffrer_texte(texte, cle))
                 print(f"Résultat enregistré dans {nom_fichier}")
+
         elif choix == '2':
             texte = demander_texte()
             cle = demander_cle()
@@ -56,6 +58,7 @@ def menu_principal():
                 nom_fichier = f"{nom_fichier}.txt"
                 ecrire_fichier(nom_fichier, dechiffrer_texte(texte, cle))
                 print(f"Résultat enregistré dans {nom_fichier}")
+
         elif choix == '3':
             nom = input("Nom du fichier à chiffrer : ")
             contenu = lire_fichier(nom)
@@ -65,6 +68,7 @@ def menu_principal():
                 nom_sortie = input("Nom du fichier de sortie (ex: mon_fichier_chiffre.txt) : ")
                 ecrire_fichier(nom_sortie, resultat)
                 print(f"Fichier chiffré enregistré dans {nom_sortie}")
+
         elif choix == '4':
             nom = input("Nom du fichier à déchiffrer : ")
             contenu = lire_fichier(nom)
@@ -74,6 +78,27 @@ def menu_principal():
                 nom_sortie = input("Nom du fichier de sortie (ex: mon_fichier_dechiffre.txt) : ")
                 ecrire_fichier(nom_sortie, resultat)
                 print(f"Fichier déchiffré enregistré dans {nom_sortie}")
+
+        elif choix == "5":
+            texte = demander_texte()
+
+            # Mots fréquents (tu peux aussi les charger depuis un fichier si besoin)
+
+            mots_frequents = {"le", "la", "et", "un", "de", "en", "est", "que", "dans", "pour"}
+
+            # Appel du déchiffrement intelligent (avec interaction utilisateur)
+
+            texte_final, cle = dechiffrer_automatiquement(texte, mots_frequents, dico)
+
+            if texte_final:
+
+                print("\n Texte déchiffré :", texte_final)
+
+                print(" Clé trouvée :", cle)
+
+            else:
+
+                print("\n Aucune proposition n’a été validée par l’utilisateur.")
 
         elif choix == '6':
             print("Au revoir !")
