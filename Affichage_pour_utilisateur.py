@@ -1,9 +1,12 @@
+# Importation des fonctions nécessaires depuis les fichiers modules
 from cesar import chiffrement_cesar, dechiffrement_cesar, bruteforce
 from utils import lire_fichier, ecrire_fichier
 
+# Fonction pour demander un texte à l'utilisateur
 def demander_texte():
     return input("Entrez le texte à traiter : ")
 
+# Fonction pour demander une clé et s'assurer qu'elle soit un entier
 def demander_cle():
     while True:
         try:
@@ -11,6 +14,7 @@ def demander_cle():
         except ValueError:
             print("Veuillez entrer un entier valide.")
 
+# Fonction pour choisir où afficher le résultat (console ou fichier)
 def demander_sortie():
     """Demande à l'utilisateur où il veut voir le résultat"""
     while True:
@@ -23,6 +27,7 @@ def demander_sortie():
         print("Choix invalide.")
 
 
+# Menu principal du programme
 def menu_principal():
     while True:
         print("\n--- Menu Principal ---")
@@ -35,6 +40,7 @@ def menu_principal():
 
         choix = input("Votre choix : ")
 
+        # Option 1 : Chiffrement manuel d'un message
         if choix == '1':
             message = demander_texte()
             cle = demander_cle()
@@ -46,6 +52,8 @@ def menu_principal():
                 nom_fichier =f"{nom_fichier}.txt"
                 ecrire_fichier(nom_fichier, chiffrement_cesar(message, cle))
                 print(f"Résultat enregistré dans {nom_fichier}")
+
+        # Option 2 : Déchiffrement manuel d’un message
         elif choix == '2':
             message = demander_texte()
             cle = demander_cle()
@@ -57,6 +65,8 @@ def menu_principal():
                 nom_fichier = f"{nom_fichier}.txt"
                 ecrire_fichier(nom_fichier, dechiffrement_cesar(message, cle))
                 print(f"Résultat enregistré dans {nom_fichier}")
+
+        # Option 3 : Chiffrement d’un fichier texte
         elif choix == '3':
             nom = input("Nom du fichier à chiffrer : ")
             contenu = lire_fichier(nom)
@@ -66,6 +76,8 @@ def menu_principal():
                 nom_sortie = input("Nom du fichier de sortie (ex: mon_fichier_chiffre.txt) : ")
                 ecrire_fichier(nom_sortie, resultat)
                 print(f"Fichier chiffré enregistré dans {nom_sortie}")
+
+        # Option 4 : Déchiffrement d’un fichier texte
         elif choix == '4':
             nom = input("Nom du fichier à déchiffrer : ")
             contenu = lire_fichier(nom)
@@ -75,11 +87,16 @@ def menu_principal():
                 nom_sortie = input("Nom du fichier de sortie (ex: mon_fichier_dechiffre.txt) : ")
                 ecrire_fichier(nom_sortie, resultat)
                 print(f"Fichier déchiffré enregistré dans {nom_sortie}")
+
+        # Option 5 : Décryptage automatique sans connaître la clé (brute force)
         elif choix == '5':
             message = demander_texte()
             bruteforce(message)
+
+        # Option 6 : Quitter le programme
         elif choix == '6':
-            print("Au revoir !")
+            print("Au revoir, a la prochaine!")
             break
+        # Gestion des entrées invalides
         else:
             print("Choix invalide.")
