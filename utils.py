@@ -16,6 +16,10 @@ def ecrire_fichier(nom_fichier, contenu):
     with open(nom_fichier, 'w', encoding='utf-8') as f:
         f.write(contenu)
 
+def charger_dictionnaire(fichier):
+    with open(fichier, encoding='utf-8') as f:
+        mots = f.read().splitlines()
+    return set(m.lower() for m in mots)
 
 
 

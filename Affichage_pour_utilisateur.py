@@ -1,5 +1,5 @@
 from cesar import*
-from utils import lire_fichier, ecrire_fichier
+from utils import lire_fichier, ecrire_fichier, charger_dictionnaire
 
 def demander_texte():
     return input("Entrez le texte à traiter : ")
@@ -80,6 +80,8 @@ def menu_principal():
                 print(f"Fichier déchiffré enregistré dans {nom_sortie}")
 
         elif choix == "5":
+            # Chargement du dictionnaire
+            dico = charger_dictionnaire("ressources/dico.txt")
             texte = demander_texte()
 
             # Mots fréquents (tu peux aussi les charger depuis un fichier si besoin)
