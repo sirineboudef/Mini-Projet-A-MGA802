@@ -71,8 +71,15 @@ Ce programme permet à l'utilisateur de :
 - Conservation des caractères non-alphabétiques (espaces, ponctuation)
 - Extension `.txt` systématique pour les fichiers de sortie
 
-
-
+## Instructions:
+- Clonez le git repository et assurez vous que les fichiers soient dans le bon dossier
+- Le dictionnaire doit etre present dans le meme dossier que le repo pour que ca fontionne. 
+- Aucun package n'as besoin d'etre instaler.
+  
+## References:
+- SteveKein: Dictionnaire des mots français sous format txt. trié par ordre alphabetique
+  Format: TXT
+  Nombre de lignes: 336500
 
 
 
