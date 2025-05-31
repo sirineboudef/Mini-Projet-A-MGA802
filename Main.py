@@ -1,3 +1,21 @@
+"""
+Programme de chiffrement et déchiffrement avec le chiffrement de César
+-----------------------------------------------------------------------
+
+Ce programme permet à l'utilisateur de :
+- Chiffrer un message avec une clé (positive ou négative)
+- Déchiffrer un message avec une clé connue
+- Appliquer un déchiffrement automatique (brute force) sans connaître la clé
+- Chiffrer ou déchiffrer le contenu d’un fichier texte
+- Enregistrer les résultats dans un fichier ou les afficher à l’écran
+
+Modules requis : cesar.py (algorithmes de chiffrement), utils.py (lecture/écriture de fichiers)
+
+Auteurs : Alexis Chenuet  
+          Syrine Boudef  
+          Wilson David Parra Oliveros
+"""
+
 from brute_force import*
 from chiffrement_cesar import*
 
@@ -60,11 +78,8 @@ def menu_principal():
                 print(f"Fichier déchiffré enregistré dans {nom_sortie}")
 
         elif choix == "5":
-            # Chargement du dictionnaire
             dico = charger_dictionnaire("ressources/dico.txt")
             texte = demander_texte()
-
-            # Appel du déchiffrement intelligent (avec interaction utilisateur)
             texte_final, cle = dechiffrer_automatiquement(texte, mots_frequents, dico)
 
             if texte_final and cle is not None:
@@ -78,8 +93,8 @@ def menu_principal():
                     contenu = f"Clé trouvée : {cle}\n\nTexte déchiffré :\n{texte_final}"
                     ecrire_fichier(nom_fichier, contenu)
                     print(f"\nRésultat enregistré dans {nom_fichier}")
-                else:
-                     print("\n Aucune proposition n’a été validée par l’utilisateur.")
+            else:
+                print("\n Aucune proposition n’a été validée par l’utilisateur.")
 
         elif choix == "6":
             dico = charger_dictionnaire("ressources/dico.txt")
