@@ -2,12 +2,18 @@
 # Mini-Projet-A-MGA802
 Création d'un programme de chiffrement de cesar
 
-# Objectif
-Ce programme permet a l'utilisateur de:
-1- Chiffrer ou dechiffrer du texte en l'introduisant par la console ou par fichier, et a la possibilte de choisir entre
-obtenir son resultat par la console ou dans un fichier
-2- Dechifrer par la methode de la force-brute automatique du texte en l'introduisant par la console ou par fichier, et a la possibilte de choisir entre
-obtenir son resultat par la console ou dans un fichier
+## Fonctionnalités du programme
+
+Ce programme permet à l'utilisateur de :
+
+1. **Chiffrer ou déchiffrer du texte**  
+   - Le texte peut être introduit **par la console** ou **depuis un fichier**.  
+   - L'utilisateur peut choisir d'obtenir le résultat **dans la console** ou **enregistré dans un fichier**.
+
+2. **Déchiffrer un texte par la méthode de la force brute automatique**  
+   - Le texte peut également être introduit **par la console** ou **depuis un fichier**.  
+   - Le résultat peut être affiché **dans la console** ou **enregistré dans un fichier**, selon le choix de l'utilisateur.
+
 
 ### 1. Chiffrer un texte
 - **Étapes :**
