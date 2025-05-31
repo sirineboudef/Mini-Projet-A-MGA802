@@ -49,7 +49,7 @@ obtenir son resultat par la console ou dans un fichier
      - **Option 1** : Affichage du message chiffré dans la console
      - **Option 2** : Enregistrement dans un fichier texte (nom personnalisable)
      - 
-### 4. Déchiffrer un fichier avec brute force
+### 6. Déchiffrer un fichier avec brute force
 - **Étapes :**
   1. L'utilisateur spécifie le fichier chiffré à décoder
   2. L'utilisateur valide le resultat ou pas
