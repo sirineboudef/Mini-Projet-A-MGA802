@@ -31,5 +31,27 @@ def charger_dictionnaire(fichier):
         mots = f.read().splitlines()
     return set(m.lower() for m in mots)
 
+# Fonction qui permet de demander le texte
+def demander_texte():
+    return input("Entrez le texte à traiter : ")
 
+# Fonction qui permet d'avoir la cle
+def demander_cle():
+    while True:
+        try:
+            return int(input("Entrez la clé (positive ou négative) : "))
+        except ValueError:
+            print("Veuillez entrer un entier valide.")
+
+# Fonction pour demander a l'utilisateur ou il veut avoir le resultat
+def demander_sortie():
+    """Demande à l'utilisateur où il veut voir le résultat"""
+    while True:
+        print("\nOù voulez-vous le résultat ?")
+        print("1. Afficher dans la console")
+        print("2. Enregistrer dans un fichier")
+        choix = input("Votre choix : ")
+        if choix in ('1', '2'):
+            return choix
+        print("Choix invalide.")
 

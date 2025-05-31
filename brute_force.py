@@ -13,7 +13,7 @@ le dictionnaire, et tenter d'abord d'explorer une liste de mot frequents """
 
 # Importations necessaires
 import string
-from cesar import* # Importer tous ce qu'il ya dans cesar
+from chiffrement_cesar import* # Importer tous ce qu'il ya dans cesar
 
 SEUIL_MIN=3  # score minimal pour considérer un score valable
 
