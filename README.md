@@ -81,6 +81,12 @@ Ce programme permet à l'utilisateur de :
   Format: TXT
   Nombre de lignes: 336500
 
+ ## Auteurs:
+- Syrine Boudef
+- Wilson Parra Oliveros
+- Alexis Chenuet
+  
+
 
 
 
